@@ -33,7 +33,7 @@ public class ServletPlantilla extends ServletTemplate
      */
     public String darTituloPagina( HttpServletRequest request )
     {
-        return "Usuario";
+        return "Ordenar Operación Bursátil";
     }
 
     /**
@@ -61,21 +61,15 @@ public class ServletPlantilla extends ServletTemplate
         try
         {
         	
-            String login = request.getParameter( "loginlogin" );
-            String contrasenia = request.getParameter( "contrasenialogin" );
+            String accion = request.getParameter( "opc-compvend-of" );
+            
             
             if(login!=null){
-            	if(login.equals("intermediario" && contrasenia!=null){
-            		imprimirDatos(respuesta,"Intermediario");	
+            	if(accion.equals("Comprar y vender mis productos"){
+            		imprimirDatos(respuesta,"productos");	
             	}
-            	else if(login.equals("inversionista" && conrasenia!=null){
-            		imprimirDatos(respuesta,"Inversionista");
-            	}
-            	else if(login.equals("oferente" && contrasenia!=null){
-            		imprimirDatos(respuesta,"Oferente");
-            	}
-            	else{
-            		imprimirMensajeError(respuesta,"Los datos de ingreso no son correctos");
+            	else if(accion.equals("Comprar y vender de la bolsa"){
+            		imprimirDatos(respuesta,"bolsa");
             	}
             }
         }
@@ -92,37 +86,51 @@ public class ServletPlantilla extends ServletTemplate
      * @param respuesta Respuesta al cliente
      * @param estudiantes Estudiantes a imprimir
      */
-    private void imprimirDatos( PrintWriter respuesta, String tipoUsuario)
+    private void imprimirDatos( PrintWriter respuesta, String accion)
     {
     	respuesta.println("<header>");
+    	if(accion.equals("productos")
+    	{
+    		respuesta.println("	<h1>Comprar y vender de la bolsa</h1>");
+	        respuesta.println("</header>");
+    		respuesta.println("<div class="panel-central" style="width:50%; height:auto">");
+		respuesta.println("	<h2 class="form-title">Detalles de la operación:</h2>");
+	        respuesta.println("	<br>");
+	        respuesta.println("    	<form class=\"form-central\" style=\"text-align:center\" action=\"registrar-operacion-bursatil-of.html\">");
+	        respuesta.println("            <br>");
+	        respuesta.println("            <label for=\"accion-cv\" class=\"labformizq\" style=\"margin-left:45%\"><b>Acción:</b></label><br>");
+	        respuesta.println("            <select style=\"width:40%; font-size:14pt; font-family:'Helvetica'\" name= \"opc-compvend-of\">");
+	        respuesta.println("                <option value=\"Comprar\" id=\"Comprar\">Comprar</option>");
+	        respuesta.println("                <option value=\"Vender\">Vender</option>");
+	        respuesta.println("            </select><br><br>");
+	        respuesta.println("            <input type=\"radio\" name=\"groupburs\" checked id=\"radcantidad\" class=\"input3\" value=\"cantidad\"><b>Por cantidad</b><input type=\"radio\" name=\"groupburs\" id=\"radprecio\" class=\"input3\" value=\"precio\"><b>Por precio</b> <br>");
+	        respuesta.println("            <input type=\"text\" style=\"width:40%; font-size:14pt; font-family:'Helvetica'\" name=\"especif-of\" id=\"especif-of\" placeholder=\"Ingrese un valor\"><br><br>");
+	        respuesta.println("            <label for=\"producto-opbur2\" class=\"labformizq\" style=\"margin-left:45%\"><b>Producto:</b></label><br>");
+	        respuesta.println("            <select style=\"width:40%; font-size:14pt; font-family:'Helvetica'\" id='producto-opbur2' name='prod-selec-of'>");
+	        respuesta.println("            </select><br><br>");
+	        respuesta.println("            <input type='submit' value='Ordenar operación' style='width:40%; font-size:14pt; font-family:\"Helvetica\"'><br><br>");
+	        respuesta.println("    	</form>");        
+        	respuesta.println("</div>");
+    	}
+    	else if(accion.equals("bolsa")
+    	{
+    		respuesta.println("	<h1>Comprar y vender de la bolsa</h1>");
+	        respuesta.println("</header>");
+	        respuesta.println("<div class=\"panel-central\" style=\"height:auto\">");
+	        respuesta.println("	<h2 class=\"form-title\">Detalles de Operación</h2>");
+	        respuesta.println("	<form class=\"form-central\" style='text-align:center' action=\"operacionbursatil2.html\">");
+	        respuesta.println("		<br><br>");
+	        respuesta.println("		<label for=\"sel-deloferente\" class=\"labformizq\" style='margin-left:35%'><b>Seleccione un oferente:</b></label><br><br>");
+	        respuesta.println("		<select style=\"width:40%; font-size:14pt; font-family:'Helvetica'\" id=\"sel-deloferente\" name=\"prod-selec-of>");
+	        //for con las opciones que se van a ofrecer
+	        respuesta.println("		</select><br><br>");
+	        respuesta.println("		<input type='submit' value='Enviar' style='width:40%; font-size:14pt; font-family:\"Helvetica\"'><br><br>");
+	        respuesta.println("	</form>");
+	        respuesta.println("</div>");
+    	}
     	
-    	if(tipoUsuario.equals("Intermediario"){
-	        respuesta.println("    <h1>Intermediario X</h1>");
-	}
-	else if(tipoUsuario.equals("Inversionista"){
-		respuesta.println("    <h1>Inversionista X</h1>");
-	}
-	else{
-		respuesta.println("    <h1>Oferente X</h1>");
-	}
-	
-	respuesta.println("</header>");
-    	respuesta.println("<div class=\"sidebar\">");
-	respuesta.println("    <br>");
-        respuesta.println("    <br>");
-        if(tipoUsuario.equals("Intermediario"){
-	        respuesta.println("    <a href=\"operacionesordenadas.html\" class=\"linksidebar\"><b>Ver Operaciones<br> Bursátiles Ordenadas</b></a>");
-	}
-	else if(tipoUsuario.equals("Inversionista"){
-		respuesta.println("	<a href=\"operacionbursatil1.html\" class=\"linksidebar\"><b>Ordenar Operación<br> Bursátil</b></a>");
-	}
-	else
-	{
-		respuesta.println("	<a href=\"operacionbursatilf1.html\" class=\"linksidebar\"><b>Ordenar Operación<br> Bursátil</b></a>");
-	}
-	respuesta.println("	<br><br>");
-        respuesta.println("	<a href="" class=\"linksidebar\"><b>Consultar Existencias<br> de Valores</b></a>");
-        respuesta.println("</div>");
+    	
+    	
     }
     
     
