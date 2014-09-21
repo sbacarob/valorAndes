@@ -14,7 +14,7 @@ import co.edu.uniandes.videoAndes.vos.VideosValue;
  * para implementar la adición del header y del footer de 
  * la página web
  */
-public class ServletPlantilla extends ServletTemplate
+public class ServletIniciarSesion extends ServletTemplate
 {
 
     // -----------------------------------------------------------------
