@@ -14,9 +14,10 @@ import co.edu.uniandes.videoAndes.vos.VideosValue;
  * para implementar la adición del header y del footer de 
  * la página web
  */
-public class ServletOperacionBursatilOf extends ServletTemplate
+public class ServletVerExistencias extends ServletTemplate
 {
 
+	//ver-existencias.html
     // -----------------------------------------------------------------
     // Métodos
     // -----------------------------------------------------------------
@@ -61,17 +62,7 @@ public class ServletOperacionBursatilOf extends ServletTemplate
         try
         {
         	
-            String accion = request.getParameter( "opc-compvend-of" );
-            
-            
-            if(login!=null){
-            	if(accion.equals("Comprar y vender mis productos"){
-            		imprimirDatos(respuesta,"productos");	
-            	}
-            	else if(accion.equals("Comprar y vender de la bolsa"){
-            		imprimirDatos(respuesta,"bolsa");
-            	}
-            }
+            imprimirDatos(request,respuesta);
         }
         catch( Exception e )
         {
@@ -86,50 +77,33 @@ public class ServletOperacionBursatilOf extends ServletTemplate
      * @param respuesta Respuesta al cliente
      * @param estudiantes Estudiantes a imprimir
      */
-    private void imprimirDatos( PrintWriter respuesta, String accion)
+    private void imprimirDatos( HTTPServletRequest request, PrintWriter respuesta)
     {
+    	String filtroValor= request.getParameter("filtrar-valor");
+        String filtroTipoRent= request.getParameter("filtrar-tipo-rent");
+        String filtroFechaExp= request.getParameter("filtrar-fecha-exp");
+        String filtroIdInterm= request.getParameter("filtrar-id-interm");
+        String filtroTipoV= request.getParameter("filtrar-tipov");
+        String filtroIdOfer= request.getParameter("filtrar-id-oferente");
+        String filtroIdInvers= request.getParameter("filtrar-id-invers");
+        String filtroNegociando=("filtrar-negociando");
+        String filtroNoNegociando=("filtrar-no-negociando");
     	respuesta.println("<header>");
-    	if(accion.equals("productos")
-    	{
-    		respuesta.println("	<h1>Comprar y vender de mis productos</h1>");
-	        respuesta.println("</header>");
-    		respuesta.println("<div class="panel-central" style="width:50%; height:auto">");
-		respuesta.println("	<h2 class="form-title">Detalles de la operación:</h2>");
-	        respuesta.println("	<br>");
-	        respuesta.println("    	<form class=\"form-central\" style=\"text-align:center\" action=\"registrar-operacion-bursatil-of.html\">");
-	        respuesta.println("            <br>");
-	        respuesta.println("            <label for=\"accion-cv\" class=\"labformizq\" style=\"margin-left:45%\"><b>Acción:</b></label><br>");
-	        respuesta.println("            <select style=\"width:40%; font-size:14pt; font-family:'Helvetica'\" name= \"opc-compvend-of\">");
-	        respuesta.println("                <option value=\"Comprar\" id=\"Comprar\">Comprar</option>");
-	        respuesta.println("                <option value=\"Vender\">Vender</option>");
-	        respuesta.println("            </select><br><br>");
-	        respuesta.println("            <input type=\"radio\" name=\"groupburs\" checked id=\"radcantidad\" class=\"input3\" value=\"cantidad\"><b>Por cantidad</b><input type=\"radio\" name=\"groupburs\" id=\"radprecio\" class=\"input3\" value=\"precio\"><b>Por precio</b> <br>");
-	        respuesta.println("            <input type=\"text\" style=\"width:40%; font-size:14pt; font-family:'Helvetica'\" name=\"especif-of\" id=\"especif-of\" placeholder=\"Ingrese un valor\"><br><br>");
-	        respuesta.println("            <label for=\"producto-opbur2\" class=\"labformizq\" style=\"margin-left:45%\"><b>Producto:</b></label><br>");
-	        respuesta.println("            <select style=\"width:40%; font-size:14pt; font-family:'Helvetica'\" id='producto-opbur2' name='prod-selec-of'>");
-	        respuesta.println("            </select><br><br>");
-	        respuesta.println("            <input type='submit' value='Ordenar operación' style='width:40%; font-size:14pt; font-family:\"Helvetica\"'><br><br>");
-	        respuesta.println("    	</form>");        
-        	respuesta.println("</div>");
-    	}
-    	else if(accion.equals("bolsa")
-    	{
-    		respuesta.println("	<h1>Comprar y vender de la bolsa</h1>");
-	        respuesta.println("</header>");
-	        respuesta.println("<div class=\"panel-central\" style=\"height:auto\">");
-	        respuesta.println("	<h2 class=\"form-title\">Detalles de Operación</h2>");
-	        respuesta.println("	<form class=\"form-central\" style='text-align:center' action=\"operacionbursatil2.html\">");
-	        respuesta.println("		<br><br>");
-	        respuesta.println("		<label for=\"sel-deloferente\" class=\"labformizq\" style='margin-left:35%'><b>Seleccione un oferente:</b></label><br><br>");
-	        respuesta.println("		<select style=\"width:40%; font-size:14pt; font-family:'Helvetica'\" id=\"sel-deloferente\" name=\"prod-selec-of>");
-	        //for con las opciones que se van a ofrecer
-	        respuesta.println("		</select><br><br>");
-	        respuesta.println("		<input type='submit' value='Enviar' style='width:40%; font-size:14pt; font-family:\"Helvetica\"'><br><br>");
-	        respuesta.println("	</form>");
-	        respuesta.println("</div>");
-    	}
-    	
-    	
+        respuesta.println("    <h1>Órdenes</h1>");
+        respuesta.println("</header>");
+        respuesta.println("<div class=\"panel-central\">");
+        respuesta.println("    <h2 class=\"form-title\">Mis Órdenes Pendientes</h2>");
+        respuesta.println("    <table style=\"position:absolute;margin-left:25%;top:15%;\">");
+        respuesta.println("        <th>ID Valor</th>");
+        respuesta.println("        <th>ID Inversionista</th>");
+        respuesta.println("        <th>ID Oferente</th>");
+        respuesta.println("        <th>Tipo De Rentabilidad</th>");
+        respuesta.println("        <th>Fecha de Expiración</th>");
+        respuesta.println("        <th>Tipo de Valor</th>");
+        respuesta.println("        <th>Negociando</th>");
+        //for que recorre el resultado de la búsqueda
+        respuesta.println("    </table>");
+        respuesta.println("</div>");
     	
     }
     
