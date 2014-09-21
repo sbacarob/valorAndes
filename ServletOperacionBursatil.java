@@ -34,7 +34,7 @@ public class ServletOperacionBursatil extends ServletTemplate
      */
     public String darTituloPagina( HttpServletRequest request )
     {
-        return "Usuario";
+        return "Ordenar operación bursátil";
     }
 
     /**
