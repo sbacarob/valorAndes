@@ -33,7 +33,7 @@ public class ServletPlantilla extends ServletTemplate
      */
     public String darTituloPagina( HttpServletRequest request )
     {
-        return "Inicio de Sesión";
+        return "Valores de Los Andes";
     }
 
     /**
@@ -94,11 +94,30 @@ public class ServletPlantilla extends ServletTemplate
      */
     private void imprimirDatos( PrintWriter respuesta, String tipoUsuario)
     {
-    	<div class="sidebar">
-            <br>
-            <br>
-            <a href="operacionesordenadas.html" class="linksidebar"><b>Ver Operaciones<br> Bursátiles Ordenadas</b></a>
-        </div>
+    	respuesta.println("<header>");
+    	
+    	if(tipoUsuario.equals("Intermediario"){
+	        respuesta.println("    <h1>Intermediario X</h1>");
+	}
+	else if(tipoUsuario.equals("Inversionista"){
+		respuesta.println("    <h1>Inversionista X</h1>");
+	}
+	else{
+		respuesta.println("    <h1>Oferente X</h1>");
+	}
+	
+	respuesta.println("</header>");
+    	respuesta.println("<div class=\"sidebar\">");
+	respuesta.println("    <br>");
+        respuesta.println("    <br>");
+        if(tipoUsuario.equals("Intermediario"){
+	        respuesta.println("    <a href=\"operacionesordenadas.html\" class=\"linksidebar\"><b>Ver Operaciones<br> Bursátiles Ordenadas</b></a>");
+	}
+	else{
+		respuesta.println("	<a href=\"operacionbursatil1.html\" class=\"linksidebar\"><b>Ordenar Operación<br> Bursátil</b></a>");
+	}
+        respuesta.println("</div>");
+        respuesta.println("</body>");
     }
     
     
