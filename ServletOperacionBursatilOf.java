@@ -104,7 +104,7 @@ public class ServletOperacionBursatilOf extends ServletTemplate
 	        respuesta.println("                <option value=\"Vender\">Vender</option>");
 	        respuesta.println("            </select><br><br>");
 	        respuesta.println("            <input type=\"radio\" name=\"groupburs\" checked id=\"radcantidad\" class=\"input3\" value=\"cantidad\"><b>Por cantidad</b><input type=\"radio\" name=\"groupburs\" id=\"radprecio\" class=\"input3\" value=\"precio\"><b>Por precio</b> <br>");
-	        respuesta.println("            <input type=\"text\" style=\"width:40%; font-size:14pt; font-family:'Helvetica'\" name=\"oferente-select\" id=\"especif-of\" placeholder=\"Ingrese un valor\"><br><br>");
+	        respuesta.println("            <input type=\"text\" style=\"width:40%; font-size:14pt; font-family:'Helvetica'\" name=\"especif-of\" id=\"especif-of\" placeholder=\"Ingrese un valor\"><br><br>");
 	        respuesta.println("            <label for=\"producto-opbur2\" class=\"labformizq\" style=\"margin-left:45%\"><b>Producto:</b></label><br>");
 	        respuesta.println("            <select style=\"width:40%; font-size:14pt; font-family:'Helvetica'\" id='producto-opbur2' name='prod-selec-of'>");
 	        respuesta.println("            </select><br><br>");
