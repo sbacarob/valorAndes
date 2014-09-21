@@ -14,9 +14,10 @@ import co.edu.uniandes.videoAndes.vos.VideosValue;
  * para implementar la adición del header y del footer de 
  * la página web
  */
-public class ServletPlantilla extends ServletTemplate
+public class ServletOperacionBursatil extends ServletTemplate
 {
 
+	//Se genera como operacionbursatil1.html
     // -----------------------------------------------------------------
     // Métodos
     // -----------------------------------------------------------------
@@ -61,23 +62,7 @@ public class ServletPlantilla extends ServletTemplate
         try
         {
         	
-            String login = request.getParameter( "loginlogin" );
-            String contrasenia = request.getParameter( "contrasenialogin" );
-            
-            if(login!=null){
-            	if(login.equals("intermediario" && contrasenia!=null){
-            		imprimirDatos(respuesta,"Intermediario");	
-            	}
-            	else if(login.equals("inversionista" && conrasenia!=null){
-            		imprimirDatos(respuesta,"Inversionista");
-            	}
-            	else if(login.equals("oferente" && contrasenia!=null){
-            		imprimirDatos(respuesta,"Oferente");
-            	}
-            	else{
-            		imprimirMensajeError(respuesta,"Los datos de ingreso no son correctos");
-            	}
-            }
+            imprimirDatos(respuesta,"");
         }
         catch( Exception e )
         {
@@ -92,34 +77,21 @@ public class ServletPlantilla extends ServletTemplate
      * @param respuesta Respuesta al cliente
      * @param estudiantes Estudiantes a imprimir
      */
-    private void imprimirDatos( PrintWriter respuesta, String tipoUsuario)
+    private void imprimirDatos( PrintWriter respuesta)
     {
     	respuesta.println("<header>");
-    	
-    	if(tipoUsuario.equals("Intermediario"){
-	        respuesta.println("    <h1>Intermediario X</h1>");
-    	}
-    	else if(tipoUsuario.equals("Inversionista"){
-  		respuesta.println("    <h1>Inversionista X</h1>");
-    	}
-    	else{
-  		respuesta.println("    <h1>Oferente X</h1>");
-    	}
-	
-    	respuesta.println("</header>");
-    	respuesta.println("<div class=\"sidebar\">");
-	    respuesta.println("    <br>");
-      respuesta.println("    <br>");
-      if(tipoUsuario.equals("Intermediario"){
-	        respuesta.println("    <a href=\"operacionesordenadas.html\" class=\"linksidebar\"><b>Ver Operaciones<br> Bursátiles Ordenadas</b></a>");
-    	}
-	    else{
-		    respuesta.println("	<a href=\"operacionbursatil1.html\" class=\"linksidebar\"><b>Ordenar Operación<br> Bursátil</b></a>");
-    		respuesta.println("	<br><br>");
-    		respuesta.println("    <a href="" class=\"linksidebar\"><b>Consultar Existencias<br> de Valores</b></a>");
-	    }
-      respuesta.println("</div>");
-      respuesta.println("</body>");
+        respuesta.println("    <h1>Ordenar Operación Bursátil</h1>");
+        respuesta.println("</header>");
+        respuesta.println("<div class=\"panel-central\" style=\"height:auto\">");
+        respuesta.println("    <h2 class=\"form-title\">Detalles de Operación</h2>");
+        respuesta.println("    <form class=\"form-central\" style='text-align:center' action=\"operacionbursatil2.html\">");
+        respuesta.println("        <br><br>");
+        respuesta.println("        <label for=\"sel-deloferente\" class=\"labformizq\" style='margin-left:35%'><b>Seleccione un oferente:</b></label><br><br>");
+        respuesta.println("        <select style=\"width:40%; font-size:14pt; font-family:'Helvetica'\" id=\"sel-deloferente\">");
+        respuesta.println("        </select><br><br>");
+        respuesta.println("        <input type='submit' value='Enviar' style='width:40%; font-size:14pt; font-family:\"Helvetica\"'><br><br>");
+        respuesta.println("    </form>");
+        respuesta.println("</div>");
     }
     
     
