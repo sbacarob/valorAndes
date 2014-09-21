@@ -91,7 +91,7 @@ public class ServletPlantilla extends ServletTemplate
     	respuesta.println("<header>");
     	if(accion.equals("productos")
     	{
-    		respuesta.println("	<h1>Comprar y vender de la bolsa</h1>");
+    		respuesta.println("	<h1>Comprar y vender de mis productos</h1>");
 	        respuesta.println("</header>");
     		respuesta.println("<div class="panel-central" style="width:50%; height:auto">");
 		respuesta.println("	<h2 class="form-title">Detalles de la operación:</h2>");
