@@ -115,6 +115,8 @@ public class ServletPlantilla extends ServletTemplate
 	}
 	else{
 		respuesta.println("	<a href=\"operacionbursatil1.html\" class=\"linksidebar\"><b>Ordenar Operación<br> Bursátil</b></a>");
+		respuesta.println("	<br><br>");
+        	respuesta.println("    <a href="" class=\"linksidebar\"><b>Consultar Existencias<br> de Valores</b></a>");
 	}
         respuesta.println("</div>");
         respuesta.println("</body>");
