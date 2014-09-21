@@ -62,7 +62,7 @@ public class ServletOperacionBursatil extends ServletTemplate
         try
         {
         	
-            imprimirDatos(respuesta,"");
+            imprimirDatos(respuesta);
         }
         catch( Exception e )
         {
