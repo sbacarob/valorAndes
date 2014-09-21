@@ -113,13 +113,16 @@ public class ServletPlantilla extends ServletTemplate
         if(tipoUsuario.equals("Intermediario"){
 	        respuesta.println("    <a href=\"operacionesordenadas.html\" class=\"linksidebar\"><b>Ver Operaciones<br> Bursátiles Ordenadas</b></a>");
 	}
-	else{
+	else if(tipoUsuario.equals("Inversionista"){
 		respuesta.println("	<a href=\"operacionbursatil1.html\" class=\"linksidebar\"><b>Ordenar Operación<br> Bursátil</b></a>");
-		respuesta.println("	<br><br>");
-        	respuesta.println("    <a href="" class=\"linksidebar\"><b>Consultar Existencias<br> de Valores</b></a>");
 	}
+	else
+	{
+		respuesta.println("	<a href=\"operacionbursatilf1.html\" class=\"linksidebar\"><b>Ordenar Operación<br> Bursátil</b></a>");
+	}
+	respuesta.println("	<br><br>");
+        respuesta.println("	<a href="" class=\"linksidebar\"><b>Consultar Existencias<br> de Valores</b></a>");
         respuesta.println("</div>");
-        respuesta.println("</body>");
     }
     
     
