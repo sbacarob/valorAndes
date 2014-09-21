@@ -33,7 +33,7 @@ public class ServletPlantilla extends ServletTemplate
      */
     public String darTituloPagina( HttpServletRequest request )
     {
-        return "Valores de Los Andes";
+        return "Usuario";
     }
 
     /**
