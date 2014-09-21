@@ -87,7 +87,7 @@ public class ServletOperacionBursatil extends ServletTemplate
         respuesta.println("    <form class=\"form-central\" style='text-align:center' action=\"operacionbursatil2.html\">");
         respuesta.println("        <br><br>");
         respuesta.println("        <label for=\"sel-deloferente\" class=\"labformizq\" style='margin-left:35%'><b>Seleccione un oferente:</b></label><br><br>");
-        respuesta.println("        <select style=\"width:40%; font-size:14pt; font-family:'Helvetica'\" id=\"sel-deloferente\">");
+        respuesta.println("        <select style=\"width:40%; font-size:14pt; font-family:'Helvetica'\" id=\"sel-deloferente\" name=\"oferente-select\">");
         //for para llenar los oferentes
         respuesta.println("        </select><br><br>");
         respuesta.println("        <input type='submit' value='Enviar' style='width:40%; font-size:14pt; font-family:\"Helvetica\"'><br><br>");
