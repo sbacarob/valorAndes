@@ -105,6 +105,7 @@ public class ServletOperacionBursatilOf extends ServletTemplate
 	        respuesta.println("            <input type=\"text\" style=\"width:40%; font-size:14pt; font-family:'Helvetica'\" name=\"especif-of\" id=\"especif-of\" placeholder=\"Ingrese un valor\"><br><br>");
 	        respuesta.println("            <label for=\"producto-opbur2\" class=\"labformizq\" style=\"margin-left:45%\"><b>Producto:</b></label><br>");
 	        respuesta.println("            <select style=\"width:40%; font-size:14pt; font-family:'Helvetica'\" id='producto-opbur2' name='prod-selec-of'>");
+	        //for para llenar los productos
 	        respuesta.println("            </select><br><br>");
 	        respuesta.println("            <input type='submit' value='Ordenar operación' style='width:40%; font-size:14pt; font-family:\"Helvetica\"'><br><br>");
 	        respuesta.println("    	</form>");        
